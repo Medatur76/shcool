@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A really cool and epic reveal!</title>
+        <style>
+            body {
+                background-color: rgb(240, 184, 31);
+            }
+            @keyframes tilt {
+                0% {
+                    rotate: -10deg;
+                }
+                50% {
+                    rotate: 10deg;
+                }
+                100% {
+                    rotate: -10deg;
+                }
+            }
+            #title {
+                animation: tilt 4s infinite;
+                text-align: center;
+                font-size: 90px;
+                margin-top: 120px;
+            }
+            #name {
+                text-align: center;
+                font-size: 90px;
+                margin-top: 240px;
+            }
+        </style>
+    </head>
+    <body>
+        <script defer>
+            alert("The animation starts after pressing the space bar");
+            let notStarted = true;
+            function makeid(length) {
+                let result = '';
+                const characters = '!@#$%^&*()_+=-<>,./;abcdefghijklmnopqrstuvwxyz0123456789';
+                const charactersLength = characters.length;
+                let counter = 0;
+                while (counter < length) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                    counter += 1;
+                }
+                return result;
+            }
+            function obfuscate() {
+                if (notStarted) document.getElementById("name").textContent = makeid(3) + " " + makeid(8);
+            }
+            document.addEventListener('keydown', (event) => {
+                if (event.keyCode == 32) {
+                    notStarted = false;
+                }
+            });
+
+            setInterval(obfuscate, 200);
+            
+        </script>
+        <div id="text">
+            <h1 id="title">I wonder who the teacher of the month is</h1>
+            <h1 id="name"></h1>
+        </div>
+    </body>
+</html>
